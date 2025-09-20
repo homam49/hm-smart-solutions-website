@@ -48,17 +48,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Netlify Forms handling
+    // Netlify Forms handling with AJAX
     const contactForm = document.querySelector('#contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
             // Basic validation
             if (!data.company || !data.name || !data.email) {
-                e.preventDefault();
                 alert('Please fill in all required fields.');
                 return;
             }
@@ -66,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(data.email)) {
-                e.preventDefault();
                 alert('Please enter a valid email address.');
                 return;
             }
@@ -78,8 +78,33 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Let Netlify handle the form submission
-            // Form will be processed by Netlify and you'll receive notifications
+            // Submit to Netlify via AJAX
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // Success! Show custom success message
+                const formContainer = document.querySelector('.contact-form');
+                formContainer.innerHTML = `
+                    <div style="text-align: center; padding: 3rem 2rem; background: var(--light-gray); border-radius: 16px;">
+                        <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-check" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="color: var(--primary-navy); margin-bottom: 1rem;">Thank You!</h3>
+                        <p style="color: var(--medium-gray); margin-bottom: 1.5rem;">
+                            Your partnership inquiry has been successfully submitted. We'll contact you within 24 hours to discuss opportunities.
+                        </p>
+                        <button onclick="location.reload()" class="btn btn-primary">Send Another Inquiry</button>
+                    </div>
+                `;
+            })
+            .catch((error) => {
+                alert('Oops! There was a problem submitting your form. Please try again.');
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            });
         });
     }
 
