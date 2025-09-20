@@ -24,6 +24,12 @@
     max-width: 100%;
 }
 
+/* Prevent horizontal overflow */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -229,6 +235,8 @@ p {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
 }
 
 .hero-image {
@@ -494,6 +502,8 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 .form-group label {
