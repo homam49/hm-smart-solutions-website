@@ -20,29 +20,11 @@
     box-sizing: border-box;
 }
 
-* {
-    max-width: 100%;
-}
-
-/* Prevent horizontal overflow */
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
-}
-
-/* Ensure all elements respect viewport width */
-* {
-    max-width: 100vw;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--dark-gray);
     overflow-x: hidden;
-    max-width: 100vw;
 }
 
 html {
@@ -79,8 +61,6 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 /* Buttons */
@@ -128,7 +108,7 @@ p {
     top: 0;
     width: 100%;
     z-index: 1000;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
 }
 
 .nav-container {
@@ -138,13 +118,14 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .nav-logo .logo {
     height: 100px;
     width: auto;
+    margin: -15px 0;
+    position: relative;
+    z-index: 1001;
 }
 
 .nav-menu {
@@ -202,7 +183,7 @@ p {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, var(--light-gray) 0%, #ffffff 100%);
-    padding: 120px 0 100px;
+    padding: 150px 0 100px;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -216,8 +197,6 @@ p {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .hero-title {
@@ -242,8 +221,6 @@ p {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    width: 100%;
-    max-width: 100%;
 }
 
 .hero-image {
@@ -509,8 +486,6 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    width: 100%;
-    max-width: 100%;
 }
 
 .form-group label {
@@ -626,17 +601,6 @@ section {
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        padding: 0.25rem 0;
-        max-width: 100vw;
-        overflow-x: hidden;
-    }
-    
-    .nav-logo .logo {
-        height: 50px;
-        max-width: 100%;
-    }
-    
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -676,24 +640,6 @@ section {
 
     .container {
         padding: 0 1rem;
-        max-width: 100vw;
-        overflow-x: hidden;
-        width: 100%;
-    }
-    
-    .nav-container {
-        padding: 0 1rem;
-        max-width: 100vw;
-        overflow-x: hidden;
-        width: 100%;
-    }
-    
-    .hero-container {
-        padding: 0 1rem;
-        gap: 2rem;
-        max-width: 100vw;
-        overflow-x: hidden;
-        width: 100%;
     }
 
     .hero {
@@ -702,20 +648,6 @@ section {
 
     .hero-title {
         font-size: 2.5rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .hero-subtitle {
-        font-size: 1.1rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        max-width: 100%;
-        width: 100%;
     }
 
     .hero-buttons {
@@ -766,17 +698,6 @@ section {
 }
 
 @media (max-width: 480px) {
-    .navbar {
-        padding: 0.2rem 0;
-        max-width: 100vw;
-        overflow-x: hidden;
-    }
-    
-    .nav-logo .logo {
-        height: 40px;
-        max-width: 100%;
-    }
-    
     .hero-title {
         font-size: 2rem;
     }

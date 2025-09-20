@@ -46,26 +46,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form handling with Netlify Forms
+    // Form handling with Formspree
     const contactForm = document.querySelector('.contact-form form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
             // Basic validation
             if (!data.company || !data.name || !data.email) {
-                e.preventDefault();
-                HMSolutions.notify('Please fill in all required fields.', 'error');
+                alert('Please fill in all required fields.');
                 return;
             }
             
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(data.email)) {
-                e.preventDefault();
-                HMSolutions.notify('Please enter a valid email address.', 'error');
+                alert('Please enter a valid email address.');
                 return;
             }
             
@@ -73,11 +73,35 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
             
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Let Netlify handle the form submission
-            // The form will redirect to thank-you.html
+            // Submit to Formspree
+            fetch(this.action, {
+                method: this.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    HMSolutions.notify('Thank you! We will contact you within 24 hours to discuss partnership opportunities.', 'success');
+                    this.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert('Oops! There was a problem submitting your form');
+                        }
+                    })
+                }
+            }).catch(error => {
+                alert('Oops! There was a problem submitting your form');
+            }).finally(() => {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            });
         });
     }
 
