@@ -20,11 +20,16 @@
     box-sizing: border-box;
 }
 
+* {
+    max-width: 100%;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--dark-gray);
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 html {
@@ -61,6 +66,8 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Buttons */
@@ -118,6 +125,8 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .nav-logo .logo {
@@ -194,6 +203,8 @@ p {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .hero-title {
@@ -599,17 +610,17 @@ section {
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 0.1rem 0;
+        padding: 0.25rem 0;
     }
     
     .nav-logo .logo {
-        height: 40px;
+        height: 60px;
     }
     
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 50px;
+        top: 70px;
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
@@ -645,14 +656,33 @@ section {
 
     .container {
         padding: 0 1rem;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .hero-container {
+        padding: 0 1rem;
+        gap: 2rem;
     }
 
     .hero {
-        padding: 80px 0 60px;
+        padding: 120px 0 80px;
     }
 
     .hero-title {
         font-size: 2.5rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .hero-buttons {
@@ -704,15 +734,11 @@ section {
 
 @media (max-width: 480px) {
     .navbar {
-        padding: 0.05rem 0;
+        padding: 0.2rem 0;
     }
     
     .nav-logo .logo {
-        height: 35px;
-    }
-    
-    .hero {
-        padding: 70px 0 50px;
+        height: 50px;
     }
     
     .hero-title {
@@ -740,25 +766,6 @@ section {
 
     .benefit-icon i {
         font-size: 2rem;
-    }
-}
-
-/* Extra small phones */
-@media (max-width: 360px) {
-    .navbar {
-        padding: 0.02rem 0;
-    }
-    
-    .nav-logo .logo {
-        height: 30px;
-    }
-    
-    .hero {
-        padding: 60px 0 40px;
-    }
-    
-    .hero-title {
-        font-size: 1.8rem;
     }
 }
 
