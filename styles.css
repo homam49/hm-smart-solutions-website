@@ -599,17 +599,17 @@ section {
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 0.25rem 0;
+        padding: 0.1rem 0;
     }
     
     .nav-logo .logo {
-        height: 60px;
+        height: 40px;
     }
     
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 50px;
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
@@ -648,7 +648,7 @@ section {
     }
 
     .hero {
-        padding: 120px 0 80px;
+        padding: 80px 0 60px;
     }
 
     .hero-title {
@@ -704,11 +704,15 @@ section {
 
 @media (max-width: 480px) {
     .navbar {
-        padding: 0.2rem 0;
+        padding: 0.05rem 0;
     }
     
     .nav-logo .logo {
-        height: 50px;
+        height: 35px;
+    }
+    
+    .hero {
+        padding: 70px 0 50px;
     }
     
     .hero-title {
@@ -736,6 +740,25 @@ section {
 
     .benefit-icon i {
         font-size: 2rem;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+    .navbar {
+        padding: 0.02rem 0;
+    }
+    
+    .nav-logo .logo {
+        height: 30px;
+    }
+    
+    .hero {
+        padding: 60px 0 40px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
     }
 }
 
