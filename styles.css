@@ -598,6 +598,14 @@ section {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0.25rem 0;
+    }
+    
+    .nav-logo .logo {
+        height: 60px;
+    }
+    
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -695,6 +703,14 @@ section {
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        padding: 0.2rem 0;
+    }
+    
+    .nav-logo .logo {
+        height: 50px;
+    }
+    
     .hero-title {
         font-size: 2rem;
     }
