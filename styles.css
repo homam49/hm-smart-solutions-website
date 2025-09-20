@@ -28,6 +28,13 @@
 html, body {
     overflow-x: hidden;
     width: 100%;
+    max-width: 100vw;
+}
+
+/* Ensure all elements respect viewport width */
+* {
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 body {
@@ -621,10 +628,13 @@ section {
 @media (max-width: 768px) {
     .navbar {
         padding: 0.25rem 0;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     
     .nav-logo .logo {
-        height: 60px;
+        height: 50px;
+        max-width: 100%;
     }
     
     .nav-menu {
@@ -666,17 +676,24 @@ section {
 
     .container {
         padding: 0 1rem;
-        max-width: 100%;
+        max-width: 100vw;
         overflow-x: hidden;
+        width: 100%;
     }
     
     .nav-container {
         padding: 0 1rem;
+        max-width: 100vw;
+        overflow-x: hidden;
+        width: 100%;
     }
     
     .hero-container {
         padding: 0 1rem;
         gap: 2rem;
+        max-width: 100vw;
+        overflow-x: hidden;
+        width: 100%;
     }
 
     .hero {
@@ -687,12 +704,18 @@ section {
         font-size: 2.5rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+        width: 100%;
     }
 
     .hero-subtitle {
         font-size: 1.1rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+        width: 100%;
     }
 
     .hero-buttons {
@@ -745,10 +768,13 @@ section {
 @media (max-width: 480px) {
     .navbar {
         padding: 0.2rem 0;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     
     .nav-logo .logo {
-        height: 50px;
+        height: 40px;
+        max-width: 100%;
     }
     
     .hero-title {
