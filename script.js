@@ -1,5 +1,7 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS
+    emailjs.init("YOUR_PUBLIC_KEY"); // This will be replaced with actual key
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -46,18 +48,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form handling with Formspree
-    const contactForm = document.querySelector('.contact-form form');
+    // Netlify Forms handling
+    const contactForm = document.querySelector('#contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
             // Basic validation
             if (!data.company || !data.name || !data.email) {
+                e.preventDefault();
                 alert('Please fill in all required fields.');
                 return;
             }
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(data.email)) {
+                e.preventDefault();
                 alert('Please enter a valid email address.');
                 return;
             }
@@ -76,32 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Submit to Formspree
-            fetch(this.action, {
-                method: this.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    HMSolutions.notify('Thank you! We will contact you within 24 hours to discuss partnership opportunities.', 'success');
-                    this.reset();
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            alert(data["errors"].map(error => error["message"]).join(", "));
-                        } else {
-                            alert('Oops! There was a problem submitting your form');
-                        }
-                    })
-                }
-            }).catch(error => {
-                alert('Oops! There was a problem submitting your form');
-            }).finally(() => {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            });
+            // Let Netlify handle the form submission
+            // Form will be processed by Netlify and you'll receive notifications
         });
     }
 
