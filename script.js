@@ -1,7 +1,5 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS
-    emailjs.init("YOUR_PUBLIC_KEY"); // This will be replaced with actual key
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
