@@ -108,7 +108,7 @@ p {
     top: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 .nav-container {
@@ -121,7 +121,7 @@ p {
 }
 
 .nav-logo .logo {
-    height: 50px;
+    height: 100px;
     width: auto;
 }
 
@@ -180,7 +180,7 @@ p {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, var(--light-gray) 0%, #ffffff 100%);
-    padding: 150px 0 100px;
+    padding: 120px 0 100px;
     min-height: 100vh;
     display: flex;
     align-items: center;

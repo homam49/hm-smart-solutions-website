@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Basic validation
             if (!data.company || !data.name || !data.email) {
                 e.preventDefault();
-                alert('Please fill in all required fields.');
+                HMSolutions.notify('Please fill in all required fields.', 'error');
                 return;
             }
             
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(data.email)) {
                 e.preventDefault();
-                alert('Please enter a valid email address.');
+                HMSolutions.notify('Please enter a valid email address.', 'error');
                 return;
             }
             
@@ -73,11 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
             
-            submitButton.textContent = 'Sending...';
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitButton.disabled = true;
             
             // Let Netlify handle the form submission
-            // The form will redirect to a thank you page or show success message
+            // The form will redirect to thank-you.html
         });
     }
 
