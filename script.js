@@ -1,5 +1,58 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Check for success parameter and show success message
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+        // Show success message
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Replace the contact form with success message
+            setTimeout(() => {
+                const formContainer = document.querySelector('.contact-form');
+                if (formContainer) {
+                    formContainer.innerHTML = `
+                        <div style="text-align: center; padding: 3rem 2rem; background: var(--light-gray); border-radius: 16px; border: 3px solid var(--secondary-teal);">
+                            <div style="width: 100px; height: 100px; background: var(--gradient); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 2rem;">
+                                <i class="fas fa-check" style="font-size: 3rem; color: white;"></i>
+                            </div>
+                            <h3 style="color: var(--primary-navy); margin-bottom: 1rem; font-size: 2rem;">Thank You!</h3>
+                            <p style="color: var(--medium-gray); margin-bottom: 2rem; font-size: 1.1rem;">
+                                Your partnership inquiry has been successfully submitted.<br>
+                                We'll contact you within 24 hours to discuss opportunities.
+                            </p>
+                            <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                                <h4 style="color: var(--primary-navy); margin-bottom: 1rem;">What happens next?</h4>
+                                <ul style="text-align: left; color: var(--medium-gray); list-style: none; padding: 0; max-width: 400px; margin: 0 auto;">
+                                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                        <i class="fas fa-clock" style="color: var(--secondary-teal); margin-right: 1rem; width: 20px;"></i>
+                                        Review within 24 hours
+                                    </li>
+                                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                        <i class="fas fa-phone" style="color: var(--secondary-teal); margin-right: 1rem; width: 20px;"></i>
+                                        Direct contact discussion
+                                    </li>
+                                    <li style="display: flex; align-items: center;">
+                                        <i class="fas fa-handshake" style="color: var(--secondary-teal); margin-right: 1rem; width: 20px;"></i>
+                                        Partnership call scheduling
+                                    </li>
+                                </ul>
+                            </div>
+                            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                                <button onclick="location.href='/'" class="btn btn-primary">Return Home</button>
+                                <button onclick="location.reload()" class="btn btn-secondary">Send Another Inquiry</button>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }, 500);
+        }
+    }
+
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
