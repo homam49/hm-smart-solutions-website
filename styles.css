@@ -20,11 +20,18 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--dark-gray);
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
 html {
@@ -61,6 +68,8 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* Buttons */
@@ -601,10 +610,19 @@ section {
 }
 
 @media (max-width: 768px) {
+    .nav-logo .logo {
+        height: 60px;
+        margin: -10px 0;
+    }
+
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 60px;
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
@@ -698,6 +716,19 @@ section {
 }
 
 @media (max-width: 480px) {
+    .nav-logo .logo {
+        height: 50px;
+        margin: -8px 0;
+    }
+
+    .navbar {
+        padding: 0.4rem 0;
+    }
+
+    .nav-menu {
+        top: 50px;
+    }
+
     .hero-title {
         font-size: 2rem;
     }
